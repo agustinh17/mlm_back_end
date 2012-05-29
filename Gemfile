@@ -34,6 +34,7 @@ gem 'jquery-rails'
 
 gem "twitter-bootstrap-rails"
 
+gem 'bcrypt-ruby'
 gem 'omniauth-identity'
 gem 'bootstrap-generators', '~> 2.0'
 gem 'simple_form', '~> 2.0'
@@ -52,3 +53,4 @@ gem 'simple_form', '~> 2.0'
 
 # To use debugger
 # gem 'ruby-debug19', :require => 'ruby-debug'
+
