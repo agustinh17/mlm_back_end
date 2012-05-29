@@ -7,7 +7,6 @@ gem 'rails', '3.2.3'
 
 gem 'pg'
 
-gem "rspec-rails", ">= 2.9.0.rc2", :group => [:development, :test]
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
@@ -20,11 +19,25 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
 end
 
+gem "rspec-rails", ">= 2.9.0.rc2", :group => [:development, :test]
+group :test do
+  gem "factory_girl_rails"
+  gem "launchy"
+  gem "capybara"
+  gem "database_cleaner"
+  gem "guard-rspec"
+end
+
 gem 'jquery-rails'
 
-gem 'devise'
+#gem 'devise'
 
 gem "twitter-bootstrap-rails"
+
+gem 'omniauth-identity'
+gem 'bootstrap-generators', '~> 2.0'
+gem 'simple_form', '~> 2.0'
+
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 
