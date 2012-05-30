@@ -26,6 +26,7 @@ group :test do
   gem "capybara"
   gem "database_cleaner"
   gem "guard-rspec"
+  gem "shoulda"
 end
 
 gem 'jquery-rails'
