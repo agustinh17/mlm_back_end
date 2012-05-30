@@ -1,0 +1,82 @@
+<h3>New Account</h3>
+<%= form_tag "/auth/identity/register" do %>
+<% if @identity && @identity.errors.any? %>
+ <div class="error_messages">
+ <h2><%= pluralize(@identity.errors.count, "error") %> prohibited this account from being saved:</h2>
+ <ul>
+ <% @identity.errors.full_messages.each do |msg| %>
+ <li><%= msg %></li>
+ <% end %>
+ </ul>
+ </div>
+<% end %>
+<div class="field">
+ <%= label_tag :name %><br>
+ <%= text_field_tag :name, @identity.try(:name) %>
+</div>
+<div class="field">
+ <%= label_tag :email %><br>
+ <%= text_field_tag :email, @identity.try(:email) %>
+</div>
+<div class="field">
+ <%= label_tag :password %><br>
+ <%= password_field_tag :password %>
+</div>
+<div class="field">
+ <%= label_tag :password_confirmation %><br>
+ <%= password_field_tag :password_confirmation %>
+</div>
+<div class="field">
+ <%= label_tag :company %><br>
+ <%= text_field_tag :company %>
+</div>
+<div class="field">
+	<%= label_tag :spouse_name %><br>
+	<%= text_field_tag :spouse_name %>
+</div>
+<div class="field">
+ <%= label_tag :street_address %><br>
+ <%= text_field_tag :street_address %>
+</div>
+<div class="field">
+	<%= label_tag :city %><br>
+	<%= text_field_tag :city %>
+</div>
+<div class="field">
+	<%= label_tag :state %><br>
+	<%= text_field_tag :state %>
+</div>
+<div class="field">
+	<%= label_tag :zip %><br>
+	<%= text_field_tag :zip %>
+</div>
+</div>
+<div class="field">
+	<%= label_tag :ein %><br>
+	<%= text_field_tag :ein %>
+</div>
+<div class="field">
+	<%= label_tag :home_phone %><br>
+	<%= text_field_tag :home_phone %>
+</div>
+<div class="field">
+	<%= label_tag :cell %><br>
+	<%= text_field_tag :cell %>
+</div>
+</div>
+<div class="field">
+	<%= label_tag :package %><br>
+	<%= text_field_tag :package %>
+</div>
+
+<div class="field">
+	<%= label_tag :referred_by %><br>
+	<%= text_field_tag :referred_by %>
+</div>
+</div>
+<div class="field">
+	<%= label_tag :referer_id %><br>
+	<%= text_field_tag :referer_id %>
+</div>
+<div class="actions"><%= submit_tag "Register" %></div>
+<% end %>

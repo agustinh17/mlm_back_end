@@ -1,0 +1,35 @@
+<h1>Listing users</h1>
+
+<table class='table'>
+  <tr>
+    <th>Name</th>
+    <th>Email</th>
+    <th>Referred by</th>
+		<th>Current Earnings</th>
+		<th></th>
+
+  </tr>
+
+	<% @users.each do |user| %>
+		<tr>
+			<td><%= user.name %></td>
+			<td><%= user.email %></td>
+			<td>
+			<% if not user.parent.nil? %>
+				<%= link_to user.parent.name, user.parent %>
+			<% end %>
+			</td>
+			<td>$ <%= user.current_earnings %>.00</td>
+		  <td><%= link_to 'Show', user %></td>
+		</tr>
+	<% end %>
+</table>
+
+<dl class='dl-horizontal'>
+	<dt>Total earnings: </dt>
+	<dd>$ <%= @total_earnings %>.00 </dd> 
+</dl>
+
+<br />
+
+<%= link_to 'New User', new_user_path %>

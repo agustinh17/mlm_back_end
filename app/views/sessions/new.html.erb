@@ -1,0 +1,18 @@
+<p id="notice"><%= notice %></p>
+<%= form_tag "/auth/identity/callback" do %>
+ <div class="field">
+  <%= label_tag :auth_key, "Email" %><br>
+  <%= text_field_tag :auth_key %>
+ </div>
+ <div class="field">
+  <%= label_tag :password %><br>
+  <%= password_field_tag :password %>
+ </div>
+ <% unless current_page?(:controller => 'sessions', :action => 'new') %>
+  <%= hidden_field_tag :return_to, request.env['REQUEST_URI'] %>
+ <% end %>
+ <div class="actions">
+  <%= submit_tag "Login" %>
+  or <%= link_to "Register", new_identity_path %>
+ </div>
+<% end %>
