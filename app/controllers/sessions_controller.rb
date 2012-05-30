@@ -3,7 +3,7 @@ class SessionsController < ApplicationController
   end
 
   def create
-   user = User.from_omniauth(env["omniauth.auth"])
+   user = User.from_omniauth(env["omniauth.auth"],params)
    session[:user_id] = user.id
    session["return_to"] = params[:return_to] if params[:return_to].present?
    if session["return_to"].present?
