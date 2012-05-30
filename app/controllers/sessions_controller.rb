@@ -3,13 +3,13 @@ class SessionsController < ApplicationController
   end
 
   def create
-   user = User.from_omniauth(env["omniauth.auth"])
+   user = User.from_omniauth(env["omniauth.auth"],params)
    session[:user_id] = user.id
    session["return_to"] = params[:return_to] if params[:return_to].present?
    if session["return_to"].present?
     return_page = session["return_to"]
     session["return_to"] = nil
-    redirect_to return_page
+    redirect_to return_page, notice: "Signed in!"
    else
     redirect_to root_url, notice: "Signed in!"
    end

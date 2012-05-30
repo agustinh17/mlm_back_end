@@ -1,14 +1,13 @@
 require 'spec_helper'
 
-describe User do
+describe User, "Ancestry features" do
   before(:each) do
-		@root = User.create(:name => 'root')
-		@child = @root.children.create :name => 'child1'
+		@root = User.create
+		@child = @root.children.create
     @valid_attributes = {
     }
   end
 
-#specs for ancestry features
 	it 'should have children' do
 		@root.children.should == ([@child])
 	end
@@ -18,16 +17,19 @@ describe User do
 	end
 
 	it 'should allow to create new children' do
-		u = @root.children.create(:name => 'child 2')
+		u = @root.children.create
 		@root.children.should include (u)
 		u.parent.should == (@root)
 	end
 
 	it 'should allow to search for grandsons' do
-		u = @child.children.create :name => '2nd generation'
+		u = @child.children.create
 		@root.descendants(:at_depth => 2).should == ([u])
 	end
-
+end
 #specs for public methods
 	
+describe User, "Validations" do
 end
+
+
