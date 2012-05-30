@@ -1,3 +1,13 @@
+<% content_for :nav_links do %>
+    <div class="nav-collapse">
+      <ul class="nav pull-right">
+        <li><a href="/">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#help">Help</a></li>
+				<li><%= link_to 'Admin', users_path %></li>
+      </ul>
+    </div>
+<% end %>
 <%= flash_helper %>
 <%= form_tag "/auth/identity/callback" do %>
  <div class="field">

@@ -36,6 +36,7 @@ gem 'omniauth-identity'
 gem 'bootstrap-generators', '~> 2.0'
 gem 'simple_form', '~> 2.0'
 gem 'ancestry'
+gem 'kaminari'
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 

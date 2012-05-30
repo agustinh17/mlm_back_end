@@ -1,4 +1,15 @@
-<p id="notice"><%= notice %></p>
+<% content_for :nav_links do %>
+    <div class="nav-collapse">
+      <ul class="nav pull-right">
+        <li><a href="/">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#help">Help</a></li>
+				<li class='active'><%= link_to 'Admin', users_path %></li>
+      </ul>
+    </div>
+<% end %>
+
+<h2>General information</h2>
 <dl class="dl-horizontal">
 	<dt>Name:</dt> 
 	<dd><%= @user.name %> </dd>
@@ -8,5 +19,28 @@
 		<dt>Referred by:</dt> 
 		<dd><%= link_to @user.parent.name, @user.parent %></dd>
 	<% end %>
+	<dt>Earnings:</dt>
+	<dd>$<%= @user.current_earnings %>.00</dd>
 </dl>
+
+<h2>Network</h2>
+<table class="table">
+	<tr>
+		<th>Name</th>
+		<th>Email</th>
+		<th>Earnings</th>
+		<th>Distance</th>
+		<th></th>
+	</tr>
+	<% @user.network.each do |item| -%>
+		<tr>
+			<td><%= item.name %></td>
+			<td><%= item.email %></td>
+			<td>$ <%= @user.earnings_from_user(item) %>.00</td>
+			<td><%= @user.distance_from_user(item) %></td>
+		  <td><%= link_to ('<i class="icon-search"></i>').html_safe , item %></td>
+		</tr>
+	<% end -%>
+</table>
+
 <%= link_to 'Back', users_path %>

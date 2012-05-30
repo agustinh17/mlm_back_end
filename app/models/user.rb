@@ -47,21 +47,27 @@ attr_accessible :cell, :city, :company, :ein, :home_phone, :spouse_name, :state,
 		descendants(:at_depth => 2)
 	end
 
+	def network
+		descendants.to_depth(2)
+	end
+
 	def current_earnings
 		return 0 unless self.has_platinum_package
 		earnings = 0
-		self.first_generation.each do |first_generation| 
-			earnings += 50 if first_generation.has_platinum_package
+		first_generation.each do |user|
+			earnings += self.earnings_from_user user
 		end
 		return earnings
 	end
 
-	def self.total_earnings
-		earnings = 0
-		User.all.each do |user|
-			earnings += user.current_earnings		
-		end
-		return earnings
+	def earnings_from_user(user)
+		return 50 if (self.has_platinum_package) and (self.first_generation.include? user) and (user.has_platinum_package) 		
+		return 0
+	end
+
+	def distance_from_user(user)
+		return 0 unless self.descendants.include? user
+		return user.depth - self.depth
 	end
 
 end

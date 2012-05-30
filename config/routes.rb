@@ -1,5 +1,5 @@
 MlmBackEnd::Application.routes.draw do
-  resources :users
+	resources :users, :path => '/admin/users'
 	resources :accounts, only: [:show, :index]
   resources :identities, only: [:new]
   # The priority is based upon order of creation:

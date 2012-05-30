@@ -77,6 +77,10 @@ GEM
       thor (~> 0.14)
     json (1.7.3)
     json_pure (1.6.5)
+    kaminari (0.13.0)
+      actionpack (>= 3.0.0)
+      activesupport (>= 3.0.0)
+      railties (>= 3.0.0)
     launchy (2.1.0)
       addressable (~> 2.2.6)
     libv8 (3.3.10.4)
@@ -182,6 +186,7 @@ DEPENDENCIES
   factory_girl_rails
   guard-rspec
   jquery-rails
+  kaminari
   launchy
   omniauth-identity
   pg
